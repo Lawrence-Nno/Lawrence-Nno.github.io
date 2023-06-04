@@ -9,6 +9,6 @@ title: Home
     <title>{{ page.title }}</title>
   </head>
   <body>
-    <h1>{{ "Hello World!" | downcase }}</h1>
+    <h1>{{ "About page" | downcase }}</h1>
   </body>
 </html>
