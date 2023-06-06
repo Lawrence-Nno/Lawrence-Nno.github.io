@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import time
 from turtle import Screen
 from snak import Snak
@@ -31,6 +33,18 @@ while game_is_on:
     if snak.head.distance(food) < 15:
         food.refresh()
         score.score_increase()
+        snak.extend()
+
+    """Detect collision with the wall"""
+    if snak.head.xcor() > 280 or snak.head.xcor() < -280 or snak.head.ycor() > 280 or snak.head.ycor() < -280:
+        game_is_on = False
+        score.game_over()
+
+    """Detect collision with tail"""
+    for segment in snak.segments[1:]:
+        if snak.head.distance(segment) < 10:
+            game_is_on = False
+            score.game_over()
 
 
 screen.exitonclick()
