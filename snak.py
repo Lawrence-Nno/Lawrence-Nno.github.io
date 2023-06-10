@@ -11,15 +11,18 @@ LEFT = 180
 
 class Snak:
 
+    # This method initializes the object
     def __init__(self):
         self.segments = []
         self.create_snak()
         self.head = self.segments[0]
 
+    # This method creates a new snake at the positions given
     def create_snak(self):
         for positions in STARTING_POSITIONS:
             self.add_segment(positions)
 
+    # This method adds a new segment to the snake's body
     def add_segment(self, positions):
         new_segment = Turtle("square")
         new_segment.color("yellow")
@@ -27,9 +30,11 @@ class Snak:
         new_segment.goto(positions)
         self.segments.append(new_segment)
 
+    # This method adds a new segment at the end of the snake's body
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
+    # This method moves the snake in unison
     def move(self):
         for seg_num in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[seg_num - 1].xcor()
