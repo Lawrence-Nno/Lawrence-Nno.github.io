@@ -6,6 +6,8 @@ from snak import Snak
 from food import Food
 from scoreboard import Scoreboard
 
+TIME_FOR_COLOR_CHANGE = 3
+
 # Setting the screen properties
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -33,9 +35,18 @@ while game_is_on:
 
     # Detecting collision between snak body and food
     if snak.head.distance(food) < 15:
-        food.refresh()
         score.score_increase()
         snak.extend()
+        if score.score % TIME_FOR_COLOR_CHANGE == 0:
+            food.color_food()
+            food.refresh()
+        else:
+            food.normal_food()
+            food.refresh()
+        if score.score != 1 and score.score % TIME_FOR_COLOR_CHANGE == 1:
+            snak.change_color()
+        else:
+            snak.return_to_yellow()
 
     # Detect collision with the wall
     if snak.head.xcor() > 280 or snak.head.xcor() < -280 or snak.head.ycor() > 280 or snak.head.ycor() < -280:
