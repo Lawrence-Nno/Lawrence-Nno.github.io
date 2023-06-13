@@ -21,3 +21,13 @@ class Food(Turtle):
         random_x = random.randint(-270, 270)
         random_y = random.randint(-270, 270)
         self.goto(random_x, random_y)
+
+    # This method changes shape and color of food
+    def color_food(self):
+        self.shape("triangle")
+        self.color("red")
+
+    # This method returns food to the normal shape and color
+    def normal_food(self):
+        self.shape("circle")
+        self.color("green")
