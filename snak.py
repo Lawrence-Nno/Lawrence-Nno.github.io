@@ -34,6 +34,18 @@ class Snak:
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
+    # This method changes the color of the snak body to red
+    def change_color(self):
+        for seg in self.segments:
+            if seg.color() == ('yellow', 'yellow'):
+                seg.color("red")
+
+    # This method returns the color of the snak to yellow
+    def return_to_yellow(self):
+        for seg in self.segments:
+            if seg.color() == ('red', 'red'):
+                seg.color("yellow")
+
     # This method moves the snake in unison
     def move(self):
         for seg_num in range(len(self.segments) - 1, 0, -1):
