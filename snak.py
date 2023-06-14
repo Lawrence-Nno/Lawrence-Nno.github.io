@@ -22,7 +22,7 @@ class Snak:
     # This method creates a new snake at the positions given
     def create_snak(self):
         head_segment = Turtle("turtle")
-        head_segment.color("yellow")
+        head_segment.color(139, 0, 0)
         head_segment.penup()
         self.segments.append(head_segment)
         for positions in STARTING_POSITIONS:
@@ -46,13 +46,13 @@ class Snak:
         g = random.randint(0, 255)
         b = random.randint(0, 255)
         color = (r, g, b)
-        for seg in self.segments:
+        for seg in self.segments[1:]:
             if seg.color() == ('yellow', 'yellow'):
                 seg.color(color)
 
     # This method returns the color of the snak to yellow
     def return_to_yellow(self):
-        for seg in self.segments:
+        for seg in self.segments[1:]:
             if seg.color() != ('yellow', 'yellow'):
                 seg.color("yellow")
 
