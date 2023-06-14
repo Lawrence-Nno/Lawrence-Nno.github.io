@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 
-from turtle import Turtle
+from turtle import Turtle, colormode
+import random
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 UP = 90
 DOWN = 270
 RIGHT = 0
 LEFT = 180
+colormode(255)
 
 
 class Snak:
@@ -34,16 +36,20 @@ class Snak:
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
-    # This method changes the color of the snak body to red
+    # This method changes the color of the snak to random colors
     def change_color(self):
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        color = (r, g, b)
         for seg in self.segments:
             if seg.color() == ('yellow', 'yellow'):
-                seg.color("red")
+                seg.color(color)
 
     # This method returns the color of the snak to yellow
     def return_to_yellow(self):
         for seg in self.segments:
-            if seg.color() == ('red', 'red'):
+            if seg.color() != ('yellow', 'yellow'):
                 seg.color("yellow")
 
     # This method moves the snake in unison
